@@ -21,8 +21,8 @@ jobs:
 
       - name: S3 기존 파일들 전체 삭제 후 새로 업로드
         run: |
-	        aws s3 rm --recursive s3://frontend-deploy-bucket123
+            aws s3 rm --recursive s3://frontend-deploy-bucket123
             aws s3 cp ./ s3://frontend-deploy-bucket123/ --recursive
-
+            
       - name: Cloudfront 캐시 무효화
         run: aws cloudfront create-invalidation --distribution-id {cloudfront 배포 ID} --paths "/*"
